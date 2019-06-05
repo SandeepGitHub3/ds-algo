@@ -1,4 +1,4 @@
-package com.sherlock.learn.dynamic.programming;
+package com.sherlock.learn.dynamicprogramming;
 
 import com.google.common.base.Stopwatch;
 
