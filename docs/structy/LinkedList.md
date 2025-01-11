@@ -1,8 +1,8 @@
 ### Linked List
 
-![alt text](image.png)
+![alt text](images/LL.png)
 
-![alt text](image-1.png)
+![alt text](images/LL1.png)
 
 ### Problems
 
@@ -55,13 +55,13 @@ Both have
 #### 2. Reverse Linked List
 Reverse the order of the nodes in the linked list in-place and return the new head of the reversed linked list.
 
-![alt text](image-2.png)
+![alt text](images/LL2.png)
 
-![alt text](image-3.png)
+![alt text](images/LL3.png)
 
-![alt text](image-4.png)
+![alt text](images/LL4.png)
 
-![alt text](image-6.png)
+![alt text](images/LL6.png)
 
 ##### Iterative
 
@@ -124,11 +124,11 @@ Source.zipperLists(a, x);
 ```
 
 Maintain a counter. Dependening on the counter being odd or even take the node from list 1 or list 2
-![alt text](image-5.png)
+![alt text](images/LL5.png)
 
-![alt text](image-7.png)
+![alt text](images/LL7.png)
 
-![alt text](image-8.png)
+![alt text](images/LL8.png)
 
 ```
 public static <T> Node<T> zipperLists(Node<T> head1, Node<T> head2) {
@@ -217,9 +217,9 @@ Source.mergeLists(a, q);
 ```
 
 We use a Dummy head as a starting point.
-![alt text](image-9.png)
+![alt text](images/LL9.png)
 
-![alt text](image-10.png)
+![alt text](images/LL10.png)
 
 ```
 //Iterative
@@ -415,7 +415,7 @@ Then, the reversed linked list format of this problem would appear as:
 ```
 
 Scenarios:
-![alt text](image-11.png)
+![alt text](images/LL11.png)
 
 
 ```
@@ -445,7 +445,7 @@ public static Node<Integer> addLists(Node<Integer> head1, Node<Integer> head2) {
   }
 ```
 
-![alt text](image-12.png)
+![alt text](images/LL12.png)
 
 ```
 //Recursive
