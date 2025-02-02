@@ -1,3 +1,16 @@
+# Arrays and Strings
+
+- [Arrays and Strings](#arrays-and-strings)
+  - [Intro](#intro)
+  - [Problems](#problems)
+    - [1. Anagrams](#1-anagrams)
+    - [2. most frequent char](#2-most-frequent-char)
+    - [3. pair sum](#3-pair-sum)
+    - [4. uncompress](#4-uncompress)
+    - [4. intersection](#4-intersection)
+    - [5. five sort](#5-five-sort)
+
+
 ## Intro
 
 Important techniques

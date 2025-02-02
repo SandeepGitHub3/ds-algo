@@ -1,5 +1,25 @@
 # Graphs
 
+- [Graphs](#graphs)
+  - [Introduction](#introduction)
+    - [Relaiion between nodes and Edges](#relaiion-between-nodes-and-edges)
+  - [Problems](#problems)
+    - [1. Has Path](#1-has-path)
+    - [2. undirected path](#2-undirected-path)
+    - [3. connected components count](#3-connected-components-count)
+    - [4 Largest component](#4-largest-component)
+    - [5. Shortest Path](#5-shortest-path)
+    - [6. island count](#6-island-count)
+    - [7. minimum island](#7-minimum-island)
+    - [8. Closest Carrot](#8-closest-carrot)
+    - [9. longest path](#9-longest-path)
+    - [10. semesters required](#10-semesters-required)
+    - [11. best bridge](#11-best-bridge)
+    - [12. Cycle detection](#12-cycle-detection)
+    - [13. prereqs possible](#13-prereqs-possible)
+    - [14. knight attack](#14-knight-attack)
+
+## Introduction
 ![alt text](image-21.png)
 
 ![alt text](image-22.png)
@@ -17,7 +37,7 @@ Cyclic and Acyclic Graphs
 Traversing a Cyclic Graph will result in infinite Loop
 ![alt text](image-26.png)
 
-## Relaiion between nodes and Edges
+### Relaiion between nodes and Edges
 n(nodes) = 5.  
 e(edges) = (5 * 4)/2  
 5 * -- Each node will have an edge going to other nodes.   

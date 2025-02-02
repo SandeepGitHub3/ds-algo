@@ -1,5 +1,21 @@
 # Binary Trees
 
+- [Binary Trees](#binary-trees)
+  - [Introduction](#introduction)
+  - [Problems](#problems)
+    - [1. depth first values](#1-depth-first-values)
+    - [2. Breadth first values](#2-breadth-first-values)
+    - [3. Tree Sum](#3-tree-sum)
+    - [4. Tree Min value](#4-tree-min-value)
+    - [5. max root to leaf path sum](#5-max-root-to-leaf-path-sum)
+    - [6. tree path finder](#6-tree-path-finder)
+    - [7. Height of BT](#7-height-of-bt)
+    - [8. bottom right value \[Important - LC-Medium\]](#8-bottom-right-value-important---lc-medium)
+    - [9. all tree paths](#9-all-tree-paths)
+    - [10. tree levels](#10-tree-levels)
+    - [11. leaf list](#11-leaf-list)
+
+## Introduction
 ![alt text](image.png)
 
 ![alt text](image-1.png)
