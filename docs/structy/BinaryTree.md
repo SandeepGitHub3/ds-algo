@@ -16,17 +16,17 @@
     - [11. leaf list](#11-leaf-list)
 
 ## Introduction
-![alt text](image.png)
+![alt text](images/image.png)
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
-![alt text](image-5.png) ![alt text](image-6.png) ![alt text](image-7.png)
+![alt text](images/image-5.png) ![alt text](images/image-6.png) ![alt text](images/image-7.png)
 
-![alt text](image-8.png)
+![alt text](images/image-8.png)
 
 ## Problems
 
@@ -168,7 +168,7 @@ We can also use DFS Iterative or BFS. All solutions have the same Time and Space
 ### 4. Tree Min value
 treeMinValue, that takes in the root of a binary tree that contains number values. The method should return the minimum value within the tree.
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 
 ```
 public static Double treeMinValue(Node<Double> root) {
@@ -190,7 +190,7 @@ You may assume that the input tree is non-empty.
 
 Check the 2 bases cases. Its easy to miss them.
 
-![alt text](image-10.png)
+![alt text](images/image-10.png)
 
 ```
 public static Double maxPathSum(Node<Double> root) {
@@ -214,7 +214,7 @@ The method should return an array representing a path to the target value. If th
 You may assume that the tree contains unique values.
 
 Notice 2 base cases and also how we need to pass on the list.
-![alt text](image-11.png)
+![alt text](images/image-11.png)
 
 ```
 public static <T> List<T> pathFinder(Node<T> root, T target) {
@@ -292,7 +292,7 @@ public static <T> List<T> pathFinder(Node<T> root, T target) {
 
 ### 7. Height of BT
 
-![alt text](image-12.png)
+![alt text](images/image-12.png)
 
 ```
 public static <T> int howHigh(Node<T> root) {
@@ -325,8 +325,8 @@ Since this will require level based traversal, go for BFS.
 Remember for Level based always go for BFS
 In this particular , since we are looging for rightmost value, we visit the left first by inserting left followed by right in queue.
 
-![alt text](image-13.png)
-![alt text](image-14.png)
+![alt text](images/image-13.png)
+![alt text](images/image-14.png)
 
 ```
 public static <T> T bottomRightValue(Node<T> root) {
@@ -372,10 +372,10 @@ Source.allTreePaths(a); // ->
 ```
 
 Base Cases - Left Node
-![alt text](image-15.png)
+![alt text](images/image-15.png)
 
 Null Node
-![alt text](image-16.png)
+![alt text](images/image-16.png)
 
 ```
 public static <T> List<List<T>> allTreePaths(Node<T> root) {
@@ -416,10 +416,10 @@ public static <T> List<List<T>> allTreePaths(Node<T> root) {
 - Time: O( n*log(n) )
 - Space: O( n*log(n) )
 
-![alt text](image-17.png)
-![alt text](image-18.png)
-![alt text](image-19.png)
-![alt text](image-20.png)
+![alt text](images/image-17.png)
+![alt text](images/image-18.png)
+![alt text](images/image-19.png)
+![alt text](images/image-20.png)
 
 ### 10. tree levels
 Write a method, treeLevels, that takes in the root of a binary tree. The method should return a 2-Dimensional list where each sublist represents a level of the tree.
