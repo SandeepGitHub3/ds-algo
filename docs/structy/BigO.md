@@ -7,7 +7,7 @@
 - allows us to compare performance of algorithms
 - does not rely on the environment, (languages, hardware, etc)
 
-![img.png](images/Big0-1.png)
+![img.png](images/BigO-1.png)
 
 ![img.png](images/BigO-2.png)
 

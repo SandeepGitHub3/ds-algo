@@ -19,7 +19,7 @@ public static double maxValue(double[] numbers) {
   ```  
 
 ## 2. Is Prime
-We can optimise this by just iterating till the sqrt of the number as the factors always come in pairs and they will repeat after the sqrt of the number.
+We can optimise this by just iterating till the sqrt of the number as the factors always come in pairs and they will repeat after the sqrt of the number. So till sqrt, we would have explored all possible factors of the number.
 
 ![img.png](images/IsPrime.png)
 
