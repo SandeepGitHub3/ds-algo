@@ -1,8 +1,20 @@
 # Recursion Basics
 
-![img_1.png](images/Recursive1.png)
+- [Introduction](#introduction)
+- [Problems](#problems)
+    - [1. Sum Numbers Recursive](#1-sum-numbers-recursive)
+    - [2. Factorial](#2-factorial)
+    - [3. Sum of Lengths](#3-sum-of-lengths)
+    - [4. Reverse String](#4-reverse-string-recursive)
+    - [5. Palindrome](#5-palindrome)
+    - [6. Fibonacci](#6-fibonacci)
 
-![img.png](images/Recursice2.png)
+# Introduction
+![img_1.png](images/Recursive1.png).  
+   
+![img.png](images/Recursice2.png).  
+
+![image-11.png](image-11.png)
 
 # Problems
 ### 1. sum numbers recursive
@@ -70,7 +82,28 @@ public static int sumOfLengths(List<String> strings, int index) {
 }
 ```
 
-### 4. Palindrome
+### 4. reverse string recursive
+
+Write a method, reverseString, that takes in a string as an argument. The method should return the string with its characters in reverse order. You must do this recursively.
+
+```reverseString("hello"); // -> "olleh"```
+
+![alt text](image-12.png)
+
+```
+public static String reverseString(String s) {
+    if (s.length() == 0) {
+      return "";
+    }
+
+    return reverseString(s.substring(1)) + s.charAt(0);
+  }
+```
+- Time: O(n^2)
+- Space: O(n^2)
+
+
+### 5. Palindrome
 
 ```
  public static boolean palindrome(String s) {
@@ -85,11 +118,13 @@ public static int sumOfLengths(List<String> strings, int index) {
     return palindrome(s.substring(1, s.length() - 1));
   }
 ```
+n = Lenth of the string
+N recursive calls and Each recursive call slices the string which also takes n time. So time complexity is O(n2)
 
 - Time: O(n^2)
 - Space: O(n^2)
 
-### 5. fibonacci
+### 6. fibonacci
 
 ```
 public static int fibonacci(int n) {
