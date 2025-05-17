@@ -1,9 +1,26 @@
 ### Linked List
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Problems](#problems)
+    - [1. Linked List Values](#1-linked-list-values-basic-traversal)
+    - [2. Reverse Linked List](#2-reverse-linked-list)
+    - [3. Zipper List](#3-zipper-list)
+    - [4. Merge List](#4-merge-list)
+    - [5. Longest Streak](#5-longest-streak)
+    - [6. Remove Node](#6-remove-node)
+    - [7. Insert Node](#7-insert-node)
+    - [8. Create Linked List](#8-create-linked-list)
+    - [9. Add Lists](#9-add-lists)
+
+### Introduction
+
 ![alt text](images/LL.png)
 
 ![alt text](images/LL1.png)
 
+Traversing List
+![alt text](image-13.png)
 ### Problems
 
 #### 1. linked list values (Basic Traversal)
@@ -161,6 +178,42 @@ public static <T> Node<T> zipperLists(Node<T> head1, Node<T> head2) {
   }
   ```
 
+ My Iterative Solution. should be more clear that the above one
+  ```
+  public static <T> Node<T> zipperLists(Node<T> head1, Node<T> head2) {
+    if (head1 == null) return head2;
+    if (head2 == null) return head1;
+
+    Node<T> zipHead = head1;
+    Node<T> curr1 = null;
+    Node<T> curr2 = null;
+    
+    while(head1 !=null && head2!=null){
+      curr1 = head1;
+      curr2 = head2;
+      head1 = head1.next;
+      head2 = head2.next;
+      curr1.next = curr2;
+      curr2.next = head1;
+    }
+
+    if(head1 ==null && head2 == null){
+      return zipHead;
+    }
+    
+    if(head1 == null){
+      curr2.next = head2;
+    }
+
+    if(head2 ==null){
+      curr2.next = head1;
+    }
+
+    return zipHead;
+    
+  }
+  ```
+  
   ```
   //Recursive(Not well explained in Video)
   public static <T> Node<T> zipperLists(Node<T> head1, Node<T> head2) {

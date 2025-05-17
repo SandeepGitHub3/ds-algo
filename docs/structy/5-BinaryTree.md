@@ -58,7 +58,7 @@ public static List<String> depthFirstValues(Node<String> root) {
     while (!stack.empty()) {
       Node<String> node = stack.pop();
       values.add(node.val);
-      if (node.right != null) {
+      if (node.right != null) { // <--- DO NOTE We are pushing right node to stack first
         stack.push(node.right);
       }
       if (node.left != null) {
@@ -76,20 +76,22 @@ public static List<String> depthFirstValues(Node<String> root) {
 ```
 //Recursive
 public static List<String> depthFirstValues(Node<String> root) {
-    if (root == null) {
-      return List.of();
-    }
-    
-    List<String> values = new ArrayList<>();
-    values.add(root.val);
-    values.addAll(depthFirstValues(root.left));
-    values.addAll(depthFirstValues(root.right));
-    return values;
-}
+    List<String> depthFirstValues = new ArrayList<>();
+    depthFirstValues(root,depthFirstValues);
+    return depthFirstValues;
+  }
+
+  public static void depthFirstValues(Node<String> root, List<String> depthFirstValues){
+    if (root == null) return;
+    depthFirstValues.add(root.val);
+    depthFirstValues(root.left,depthFirstValues);
+    depthFirstValues(root.right,depthFirstValues);
+    return; 
+  }
 ```
 
 - n = number of nodes
-- Time: O(n^2)
+- Time: O(n)
 - Space: O(n)
 
 
@@ -416,10 +418,18 @@ public static <T> List<List<T>> allTreePaths(Node<T> root) {
 - Time: O( n*log(n) )
 - Space: O( n*log(n) )
 
+It difficult to just specify the time and space complexity in terms of n as it will depend on how the nodes are distributed in a BT. For instance consider the 2 extreme cases below.
 ![alt text](images/image-17.png)
+
+Time and Space compexity will need to be expressed in terms of
+- Leaf nodes - Will give us the no of Paths
+- Height of the tree
+
 ![alt text](images/image-18.png)
 ![alt text](images/image-19.png)
-![alt text](images/image-20.png)
+![alt text](images/image-20.png).  
+
+n/2*log(n) = n*log(n)
 
 ### 10. tree levels
 Write a method, treeLevels, that takes in the root of a binary tree. The method should return a 2-Dimensional list where each sublist represents a level of the tree.
