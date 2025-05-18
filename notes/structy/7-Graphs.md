@@ -499,7 +499,7 @@ Map<String, List<String>> graph = Map.of(
 Source.longestPath(graph); // -> 2
 ```
 Important Problem. The trick is to detemine the terminal nodes which can be identified as nodes which do not have any neighbours, since this is Directed Acyclic graph.
-From there on we can use DFS to back calculate the distance.
+From there on we can use DFS to back calculate the distance. While calculating the distance for a node, get the longest(max) diatance of its neighbours.
 <img src="images/image-29.png" alt="alt text" width="600">
 
 ```
