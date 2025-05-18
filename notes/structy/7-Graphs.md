@@ -557,10 +557,17 @@ Source.semestersRequired(numCourses, prereqs); // -> 3
 ```
 
 Convert Input to Adjacency List
-<img src="images/image-48.png" alt="alt text" width="600">
+<img src="images/image-48.png" alt="alt text" width="600">. 
+
+The Graph has to be a DAG, else it is not possible to complete all cources. See below Acyclic graph, it mean each course needs the course to tbe completed.
+![alt text](image-14.png). 
+
+It will be the no of nodes in the longest path.
+
 <img src="images/image-49.png" alt="alt text" width="600">
 
-Terminal Nodes have a distance of 1
+To find the longest Path. Look for terminal Nodes.  
+Terminal Nodes have a distance of 1. It means we need 1 semester to take these courses.
 
 <img src="images/image-50.png" alt="alt text" width="600">
 <img src="images/image-51.png" alt="alt text" width="600">
@@ -621,85 +628,67 @@ Very interesting problem. A mix of DFS and BFS
 
 ```
 public static int bestBridge(List<List<String>> grid) {
-    HashSet<List<Integer>> mainIsland = null;
-    for (int r = 0; r < grid.size(); r += 1) {
-      for (int c = 0; c < grid.get(0).size(); c += 1) {
-        HashSet<List<Integer>> island = traverseIsland(r, c, grid, new HashSet<>());
-        if (island.size() > 0) {
-          mainIsland = island;
-        } 
-      }
-    }
-    
-    HashSet<List<Integer>> visited = new HashSet<>();
-    ArrayDeque<List<Integer>> queue = new ArrayDeque<>();
-    for (List<Integer> pos : mainIsland) {
-      int r = pos.get(0);
-      int c = pos.get(1);
-      queue.add(List.of(r, c, 0));
-      visited.add(pos);
-    }
-    
-    while (!queue.isEmpty()) {
-      List<Integer> entry = queue.remove(); 
-      int r = entry.get(0);
-      int c = entry.get(1);
-      int distance = entry.get(2);
-      List<Integer> pos = List.of(r, c);
-      
-      if (grid.get(r).get(c) == "L" && !mainIsland.contains(pos)) {
-        return distance - 1;
-      }
-
-      List<List<Integer>> deltas = List.of(
-        List.of(1, 0),
-        List.of(-1, 0),
-        List.of(0, 1),
-        List.of(0, -1)
-      );
-      
-      for (List<Integer> delta : deltas) {
-        int newRow = r + delta.get(0);
-        int newCol = c + delta.get(1);
-        List<Integer> newPos = List.of(newRow, newCol);
-        if (isInbounds(newRow, newCol, grid) && !visited.contains(newPos)) {
-          visited.add(newPos);
-          queue.add(List.of(newRow, newCol, distance + 1));
+    // todo
+    Set<SimpleEntry<Integer,Integer>> visited = new HashSet<>();
+    boolean isLandFound = false;  
+    for(int row =0 ; row<grid.size(); row++){
+      for(int col =0 ; col<grid.get(row).size(); col++){
+        if(!isLandFound && grid.get(row).get(col).equals("L")){
+          dfs(grid,row,col,visited);
+          isLandFound = true;
+          break;
         }
       }
     }
+
+    Queue<List<Integer>> qu = new ArrayDeque<>();
     
-    return -1;
+    for(SimpleEntry<Integer,Integer> entry : visited){
+      List<Integer> l = new ArrayList<>();
+      l.add(entry.getKey());
+      l.add(entry.getValue());
+      l.add(0);
+      qu.add(l);
+    }
+
+     
+    while(!qu.isEmpty()){
+      List<Integer> l = qu.remove();
+
+      int row = l.get(0);
+      int col = l.get(1);
+      int dist = l.get(2);
+
+      if(row>=0 && col>=0 && row<grid.size() && col < grid.get(row).size()){ 
+        if(!visited.contains(new SimpleEntry<>(row,col)) && grid.get(row).get(col) == "L"){
+          return dist-1;
+        }else{
+          if(grid.get(row).get(col).equals("W")) {
+            visited.add(new SimpleEntry<>(row,col));
+          }
+          qu.add(List.of(row-1,col,dist+1));
+          qu.add(List.of(row+1,col,dist+1));
+          qu.add(List.of(row,col-1,dist+1));
+          qu.add(List.of(row,col+1,dist+1));
+        }
+      }
+    }
+    return 0;
   }
 
-  public static boolean isInbounds(int r, int c, List<List<String>> grid) {
-    boolean rowInbounds = 0 <= r && r < grid.size();
-    boolean colInbounds = 0 <= c && c < grid.get(0).size();
-    return rowInbounds && colInbounds;
-  }
-  
-  public static HashSet<List<Integer>> traverseIsland(int r, int c, List<List<String>> grid, HashSet<List<Integer>> visited) {
-    if (!isInbounds(r, c, grid)) {
-      return visited;
-    }
-    
-    if (grid.get(r).get(c) == "W") {
-      return visited;
-    }
-    
-    List<Integer> pos = List.of(r, c);
-    if (visited.contains(pos)) {
-      return visited;
-    }
-    visited.add(pos);
-    
-    traverseIsland(r + 1, c, grid, visited);
-    traverseIsland(r - 1, c, grid, visited);
-    traverseIsland(r, c + 1, grid, visited);
-    traverseIsland(r, c - 1, grid, visited);
-    return visited;
-  }
+  private static void dfs(List<List<String>> grid,int row, int col, Set<SimpleEntry<Integer,Integer>> visited){
+    if(row<0 || col<0 || row>=grid.size() || col >= grid.get(row).size()) return;
+    if (visited.contains(new SimpleEntry<>(row,col))) return;
+    if(grid.get(row).get(col) == "W") return;
 
+    visited.add(new SimpleEntry<>(row,col));
+    dfs(grid,row-1,col,visited);
+    dfs(grid,row+1,col,visited);
+    dfs(grid,row,col-1,visited);
+    dfs(grid,row,col+1,visited);
+
+    return;
+  }
 ```
 
 ### 12. Cycle detection
