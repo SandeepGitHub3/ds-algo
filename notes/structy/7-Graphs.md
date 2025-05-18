@@ -20,22 +20,22 @@
     - [14. knight attack](#14-knight-attack)
 
 ## Introduction
-![alt text](images/image-21.png)
+<img src="images/image-21.png" alt="alt text" width="600">
 
-![alt text](images/image-22.png)
+<img src="images/image-22.png" alt="alt text" width="600">
 
-![alt text](images/image-23.png)
+<img src="images/image-23.png" alt="alt text" width="600">
 
 Graph Representation
 Adjacency List using HashMap
 
-![alt text](images/image-24.png)
+<img src="images/image-24.png" alt="alt text" width="600">
 
-![alt text](images/image-25.png)
+<img src="images/image-25.png" alt="alt text" width="600">
 
 Cyclic and Acyclic Graphs
 Traversing a Cyclic Graph will result in infinite Loop
-![alt text](images/image-26.png)
+<img src="images/image-26.png" alt="alt text" width="600">
 
 ### Relaiion between nodes and Edges
 n(nodes) = 5.  
@@ -47,7 +47,7 @@ e(edges) = (5 * 4)/2
 max edges. = (n * n-1)/2. 
 In general e = O(n2)
 
-![alt text](images/image-33.png)
+<img src="images/image-33.png" alt="alt text" width="600">
 ## Problems
 
 ### 1. Has Path
@@ -314,7 +314,7 @@ List<List<String>> grid = List.of(
 Source.islandCount(grid); // -> 3
 ```
 
-![alt text](images/image-27.png)
+<img src="images/image-27.png" alt="alt text" width="600">
 
 ```
 public static int islandCount(List<List<String>> grid) {
@@ -446,7 +446,7 @@ List<List<String>> grid = List.of(
 Source.closestCarrot(grid, 1, 2); // -> 4
 ```
 
-![alt text](images/image-28.png)
+<img src="images/image-28.png" alt="alt text" width="600">
 
 Modification of previous prblem, notice the usage of List for keeping track of 3 things, row, col and distance count.
 
@@ -500,7 +500,7 @@ Source.longestPath(graph); // -> 2
 ```
 Important Problem. The trick is to detemine the terminal nodes which can be identified as nodes which do not have any neighbours, since this is Directed Acyclic graph.
 From there on we can use DFS to back calculate the distance.
-![alt text](images/image-29.png)
+<img src="images/image-29.png" alt="alt text" width="600">
 
 ```
 public static int longestPath(Map<String, List<String>> graph) {
@@ -556,14 +556,14 @@ Source.semestersRequired(numCourses, prereqs); // -> 3
 ```
 
 Convert Input to Adjacency List
-![alt text](images/image-48.png)
-![alt text](images/image-49.png)
+<img src="images/image-48.png" alt="alt text" width="600">
+<img src="images/image-49.png" alt="alt text" width="600">
 
 Terminal Nodes have a distance of 1
 
-![alt text](images/image-50.png)
-![alt text](images/image-51.png)
-![alt text](images/image-52.png)
+<img src="images/image-50.png" alt="alt text" width="600">
+<img src="images/image-51.png" alt="alt text" width="600">
+<img src="images/image-52.png" alt="alt text" width="600">
 
 ```
   public static int semestersRequired(int numCourses, List<List<Integer>> prereqs) {
@@ -614,9 +614,9 @@ Source.bestBridge(grid); // -> 1
 ```
 Very interesting problem. A mix of DFS and BFS
 
-![alt text](images/image-30.png)
+<img src="images/image-30.png" alt="alt text" width="600">
 
-![alt text](images/image-32.png)
+<img src="images/image-32.png" alt="alt text" width="600">
 
 ```
 public static int bestBridge(List<List<String>> grid) {
@@ -713,13 +713,13 @@ Source.hasCycle(Map.of(
 ```
 
 
-![alt text](images/image-34.png)
+<img src="images/image-34.png" alt="alt text" width="600">
 
 IMP: Introduces the concept of VISITED and VISITING nodes
 
-![alt text](images/image-35.png)
+<img src="images/image-35.png" alt="alt text" width="600">
 
-![alt text](images/image-36.png)
+<img src="images/image-36.png" alt="alt text" width="600">
 
 ```
   public static boolean hasCycle(Map<String, List<String>> graph) {
@@ -774,10 +774,10 @@ Source.prereqsPossible(numCourses, prereqs); // -> true
 
 It boils down to basic cycle detection problem.
 
-![alt text](images/image-37.png)
-![alt text](images/image-38.png)
-![alt text](images/image-39.png)
-![alt text](images/image-40.png)
+<img src="images/image-37.png" alt="alt text" width="600">
+<img src="images/image-38.png" alt="alt text" width="600">
+<img src="images/image-39.png" alt="alt text" width="600">
+<img src="images/image-40.png" alt="alt text" width="600">
 
 
 ```
@@ -850,24 +850,24 @@ Source.knightAttack(8, 1, 1, 2, 2); // -> 2
 ```
 
 Possible positions that a knight can take
-![alt text](images/image-41.png)
+<img src="images/image-41.png" alt="alt text" width="600">
 
-![alt text](images/image-42.png)
+<img src="images/image-42.png" alt="alt text" width="600">
 
 Another way but not a min number
-![alt text](images/image-43.png)
+<img src="images/image-43.png" alt="alt text" width="600">
 
 Use BFS
 First move
-![alt text](images/image-44.png)
+<img src="images/image-44.png" alt="alt text" width="600">
 
 second move from Blue node with 1
-![alt text](images/image-45.png)
+<img src="images/image-45.png" alt="alt text" width="600">
 
 Hit the right one
-![alt text](images/image-46.png)
+<img src="images/image-46.png" alt="alt text" width="600">
 
-![alt text](images/image-47.png)
+<img src="images/image-47.png" alt="alt text" width="600">
 
 ```
   public static int knightAttack(int n, int kr, int kc, int pr, int pc) {
