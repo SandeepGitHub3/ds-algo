@@ -53,10 +53,16 @@ Source.sumPossible(15, List.of(6, 2, 10, 19)); // -> false
 
 You start with Target value.You have n choices based on the denomination of coins. At each step you subtract the amount based on the coin chosen. Keep doing this until you hit the base case of amount 0 which would mean its possible or negative number which would mean its not possible.
 
+Brute Force 
+- Time complexity id derived as O(n^a) as given an amount there will be max n branches/choices and worst case the height of the tree could be a.
+- Space Complexity - O(a) based on the height of the tree
+
+
 ![alt text](images/image-57.png)
 
 ![alt text](images/image-58.png)
 
+Time comexity - O(a*n) as we still need to perform the operation a times and for each amount we have 3 choices.
 ![alt text](images/image-59.png)
 
 ```
@@ -106,6 +112,7 @@ Source.minChange(8, List.of(1, 5, 4, 12)); // -> 2, because 4+4
 
 ![alt text](images/image-64.png)
 
+**NOTICE this Step where we check for min count**
 ```
 public static int minChange(int amount, List<Integer> coins) {
 return minChange(amount, coins, new HashMap<>());
@@ -130,7 +137,7 @@ int subAmount = amount - coin;
 int subCoins = minChange(subAmount, coins, memo);
 if (subCoins != -1) {
 int numCoins = 1 + subCoins;
-if (numCoins < minCoins || minCoins == -1) {
+if (numCoins < minCoins || minCoins == -1) { //NOTICE this Step where we check for min count.
 minCoins = numCoins;
 }
 }
@@ -173,6 +180,8 @@ Space COmplexity - r+c Stack depth will be equal to the height of the tree.
 
 ![alt text](images/image-70.png)
 
+Time Complexity - Is Driven by the no of recursive calls. Since we are storing the row and column as the key for momoisation, the max no of recorsive calls wille the total combination of r and c i.e r*c.
+
 ![alt text](images/image-71.png)
 
 ```
@@ -181,17 +190,13 @@ return countPaths(0, 0, grid, new HashMap<>());
 }
 
 public static int countPaths(int r, int c, List<List<String>> grid, HashMap<List<Integer>, Integer> memo) {
-if (r == grid.size() || c == grid.get(0).size()) {
-return 0;
-}
 
-if (grid.get(r).get(c) == "X") {
-return 0;
-}
+if(row < 0 || col< 0 || row >= grid.size() || col>= grid.get(row).size()) return 0;
 
-if (r == grid.size() - 1 && c == grid.get(0).size() - 1) {
-return 1;
-}
+if(grid.get(row).get(col) == "X") return 0;
+
+if(row == grid.size()-1 && col == grid.get(row).size()-1) return 1;
+
 
 List<Integer> pos = List.of(r, c);
 if (memo.containsKey(pos)) {
@@ -447,7 +452,8 @@ return memo.get(key);
 }
 
 int total = 0;
-for (int qty = 0; qty * coins.get(coinIdx) <= amount; qty += 1) {
+//important condition
+for (int qty = 0; qty * coins.get(coinIdx) <= amount; qty += 1) { 
 int subAmount = amount - (qty * coins.get(coinIdx));
 total += countingChange(subAmount, coinIdx + 1, coins, memo);
 }
