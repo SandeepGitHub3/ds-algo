@@ -383,6 +383,56 @@ Time: O(n^2)
 Space: O(n^2)
 ```
 
+## Balanced Binary Tree
+![alt text](image-46.png). 
+![alt text](image-47.png). 
+![alt text](image-48.png). 
+![alt text](image-49.png). 
+![alt text](image-50.png). 
+![alt text](image-51.png). 
+![alt text](image-52.png). 
+
+### 8 is balanced binary tree
+
+![alt text](image-53.png)
+
+- To check if a binary tree is balanced, we can use a recursive approach to calculate the height of each subtree and check the height difference.
+
+```
+public static boolean isBalanced(Node<String> root) {
+    return checkHeight(root) != -1;
+  }
+
+  private static int checkHeight(Node<String> node) {
+    if (node == null) {
+      return 0;
+    }
+    
+    int leftHeight = checkHeight(node.left);
+    if (leftHeight == -1) {
+      return -1; // Left subtree is unbalanced
+    }
+    
+    int rightHeight = checkHeight(node.right);
+    if (rightHeight == -1) {
+      return -1; // Right subtree is unbalanced
+    }
+    
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+      return -1; // Current node is unbalanced
+    }
+    
+    return Math.max(leftHeight, rightHeight) + 1; // Return height of current node
+  }
+```
+
+```
+n = number of nodes
+Time: O(n)
+Space: O(n)
+```
+
+
 
 
 
