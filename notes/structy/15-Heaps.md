@@ -3,7 +3,7 @@
  - Binary tree data structure
  - Maintains a partial order
  - Similar to a binary search tree
- - Heap orderring is more relaxed than binary search tree ordering
+ - Heap ordering is more relaxed than binary search tree ordering
  - Easier to maintain than a binary search tree, since there are less strict ordering requirements
 
  **MIN Heap**
