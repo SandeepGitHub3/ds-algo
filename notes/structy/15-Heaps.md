@@ -1,4 +1,15 @@
 # Heaps
+
+- [Introduction](#introduction)
+  - [Complete Binary Tree](#complete-binary-tree)
+- [Problems](#problems)
+  - [1. Heap Insertion](#1-heap-insertion)
+  - [2. Heap Deletion](#2-heap-deletion)
+  - [3. Kth Largest](#3-kth-largest)
+    - [Solution 1 : Sorting](#solution-1--sorting)
+    - [Solution 2 : Min Heap](#solution-2--min-heap)
+  - [4.k-smallest](#4k-smallest)
+
 ## Introduction
  - Binary tree data structure
  - Maintains a partial order
