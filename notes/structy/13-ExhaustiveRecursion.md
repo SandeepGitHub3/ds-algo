@@ -1,26 +1,20 @@
-## Problems
+# Exhaustive Recursion
+Problems involving all possible combinations, permutations , subsets, arrangements of a set of elements etc.
 
+table of contents
 - [Problems](#problems)
-- [1. subsets](#1-subsets)
-- [Approach](#approach)
-- [Code](#code)
-- [2. permutations](#2-permutations)
-- [Approach](#approach-1)
-- [Code](#code-1)
-- [3. create combinations](#3-create-combinations)
-- [Approach](#approach-2)
-- [Code](#code-2)
-- [Backtracking approach](#backtracking-approach)
-- [Code](#code-3)
-- [4. parenthetical possibilities](#4-parenthetical-possibilities)
-- [5. substituting synonyms](#5-substituting-synonyms)
-- [Code](#code-4)
+  - [1. subsets](#1-subsets)
+  - [2. permutations](#2-permutations)
+  - [3. create combinations](#3-create-combinations)
+  - [4. parenthetical possibilities](#4-parenthetical-possibilities)
+  - [5. substituting synonyms](#5-substituting-synonyms)
 - [Backtracking](#backtracking)
-- [Code](#code-5)
+
+## Problems
 
 ### 1. subsets
 
-Write a method, subsets, that takes in a list as an argument. The method should return a 2D list where each subarray represents one of the possible subsets of the list.
+Takes in a list as an argument and return a 2D list where each subarray represents one of the possible subsets of the list.
 
 The elements within the subsets and the subsets themselves may be returned in any order.
 
@@ -48,6 +42,37 @@ Source.subsets(List.of("a", "b")); // ->
 ![alt text](images/image-121.png)
 
 #### Code
+- Iterative
+```
+public static List<List<String>> subsets(List<String> elements) {
+    List<List<String>> allSubsets = new ArrayList<>();
+    allSubsets.add(new ArrayList<>());
+
+    for(String ele :elements){
+      getAllsubsets(ele,allSubsets);
+    }
+    
+    return allSubsets;
+  }
+
+  private static void getAllsubsets(String element, List<List<String>> allSubsets){
+     List<List<String>> subsetsForElement = new ArrayList<>(allSubsets);
+
+      // Important to get this in a variable
+      // Since the subsetSize will increase as we loop
+      int size = allSubsets.size(); 
+  
+      for(int i = 0; i < size ; i++) {
+          List<String> subsetWithElement = new ArrayList<>(allSubsets.get(i));
+          subsetWithElement.add(element);
+          allSubsets.add(subsetWithElement);
+      }
+
+      return;
+  }
+```
+
+- Recursive
 ```
 public static List<List<String>> subsets(List<String> elements) {
 if (elements.size() == 0) {
@@ -70,8 +95,12 @@ return allSubsets;
 }
 ```
 - n = length of elements list
-- Time: ~O(2^n)
+- Time: ~O(2^n) 
 - Space: ~O(2^n)
+
+2^n - since  we have 2 choices for each element (include or exclude), leading to 2^n possible subsets. N comes from the height of the tree, which is equal to the number of elements in the input list.
+
+![alt text](image-83.png)
 
 ### 2. permutations
 
@@ -100,8 +129,10 @@ Source.permutations(List.of()); // ->
 // ]
 ```
 #### Approach
+- In this case, the choice is the order of the elements in the list. We eventually need to have all elements in the list. So at every stage of a decision tree, the branches, denote the position at which the current element can be inserted.
+
 - Base case - If no elements the result is [[]]
-- Recursive case - we insert elements at all possible positions from the result of recursicve case.
+- Recursive case - we insert elements at all possible positions from the result of recursive case.
 - So for 1 element. [[A]]
 - For 2 elemens. Insert Before A and After A.  [[B,A],[A,B]]
 
