@@ -131,7 +131,7 @@
 ### 2) Multi-keyword / Phrase Queries
 
 How can we support complex keyword or phrase-based queries? for example, searching for "Taylor Swift" or "Taylor_Swift"?
-
+--
 * **Good**: Intersection and Filter
   * Split input query into individual tokens.
   * Perform intersection across inverted lists for those tokens.
@@ -139,7 +139,7 @@ How can we support complex keyword or phrase-based queries? for example, searchi
 Challenges:
   * High cardinality keywords can lead to large posting lists.
   * Requires multiple lookups and intersections, which can be slow.
-
+---
 * **Great**:bigrams or shingles 
   * Use bigrams (pairs of consecutive words) to capture word adjacency, improving relevance for short phrases.
   * Use shingles (n-grams of arbitrary length) for capturing longer phrase patterns.
