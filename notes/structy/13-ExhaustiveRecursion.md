@@ -1,7 +1,6 @@
 # Exhaustive Recursion
 Problems involving all possible combinations, permutations , subsets, arrangements of a set of elements etc.
 
-table of contents
 - [Problems](#problems)
   - [1. subsets](#1-subsets)
   - [2. permutations](#2-permutations)
@@ -42,7 +41,7 @@ Source.subsets(List.of("a", "b")); // ->
 ![alt text](images/image-121.png)
 
 #### Code
-- Iterative
+##### Iterative
 ```
 public static List<List<String>> subsets(List<String> elements) {
     List<List<String>> allSubsets = new ArrayList<>();
@@ -56,8 +55,6 @@ public static List<List<String>> subsets(List<String> elements) {
   }
 
   private static void getAllsubsets(String element, List<List<String>> allSubsets){
-     List<List<String>> subsetsForElement = new ArrayList<>(allSubsets);
-
       // Important to get this in a variable
       // Since the subsetSize will increase as we loop
       int size = allSubsets.size(); 
@@ -72,7 +69,7 @@ public static List<List<String>> subsets(List<String> elements) {
   }
 ```
 
-- Recursive
+##### Recursive
 ```
 public static List<List<String>> subsets(List<String> elements) {
 if (elements.size() == 0) {
@@ -141,6 +138,7 @@ Source.permutations(List.of()); // ->
 #### Code
 **IMP: Check how we create Sublists using the indexes**.
 
+##### Recursive Approach
 ```
 public static List<List<String>> permutations(List<String> elements) {
     if (elements.size() == 0) {
@@ -166,8 +164,8 @@ public static List<List<String>> permutations(List<String> elements) {
     return allPerms;
   }
 ```
-----
-- Backtracking approach
+
+##### Backtracking approach
 - We can use backtracking to generate all permutations by keeping track of used elements and the current path.
 ```
 public static List<List<String>> permutations(List<String> elements) {
