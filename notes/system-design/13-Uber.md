@@ -6,7 +6,7 @@ Uber is a ride-sharing platform that connects passengers with drivers. It allows
 ## Requirements
 
 ### Functional Requirements
-**Core Requirements (In Scope):**
+**Core Requirements:**
 - Riders request estimated fare.
 - Riders accept fare to get matched to a driver
 - Riders should be matched with a driver who is nearby and available
