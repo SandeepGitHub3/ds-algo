@@ -96,3 +96,53 @@ Hit the right one
     return inboundPositions;
   }  
 ```
+
+### 2. can color
+Takes in an map representing the adjacency list of an undirected graph and return a boolean indicating whether or not it is possible to color nodes of the graph using two colors in such a way that adjacent nodes are always different colors.
+
+![alt text](image-84.png)  
+![alt text](image-85.png)
+![alt text](image-86.png)
+
+### Approach
+- Traverse the graph using BFS or DFS
+- Use a map to keep track of visited nodes and colors assigned to each node
+- If I travel to a visited node, and it has a diffrent color that what I intend to color now, then return false. 
+- If all nodes can be colored without conflicts, return true
+
+![alt text](image-87.png)
+
+**DFS - Recursive**
+```
+public static boolean canColor(Map<String, List<String>> graph) {
+    HashMap<String, Boolean> coloring = new HashMap<>();
+    for (String node : graph.keySet()) {
+      if (!coloring.containsKey(node) && !valid(graph, node, coloring, false)) {
+        return false; 
+      }
+    }
+    
+    return true;
+  }
+  
+  public static boolean valid(Map<String, List<String>> graph, String node, HashMap<String, Boolean> coloring, boolean currentColor) {
+    if (coloring.containsKey(node)) {
+      return currentColor == coloring.get(node);
+    }
+    
+    coloring.put(node, currentColor);
+    
+    for (String neighbor : graph.get(node)) {
+      if (!valid(graph, neighbor, coloring, !currentColor)) {
+        return false;
+      }
+    }
+    
+    return true;
+  }
+```
+**Complexity**
+- n = number of nodes
+- Time: O(n^2)
+- Space: O(n)
+
