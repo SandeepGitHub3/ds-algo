@@ -211,8 +211,6 @@ public static boolean tolerantTeams(List<List<String>> rivalries) {
         return false;
       }
     }
-    System.out.println(graph);
-    System.out.println(coloring);
     return true;
 }
 
