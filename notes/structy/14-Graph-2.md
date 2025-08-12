@@ -30,25 +30,39 @@ The method should return a number representing the minimum number of moves requi
 Source.knightAttack(8, 1, 1, 2, 2); // -> 2
 ```
 
-Possible positions that a knight can take
-<img src="images/image-41.png" alt="alt text" width="600">
+**Possible positions that a knight can take:**
 
-<img src="images/image-42.png" alt="alt text" width="600">
+<div align="center">
+<img src="images/image-41.png" alt="Knight possible positions" width="500">
+<img src="images/image-42.png" alt="Knight movement pattern" width="500">
+</div>
 
-Another way but not a min number
-<img src="images/image-43.png" alt="alt text" width="600">
+**Another way but not a minimum number:**
 
-Use BFS
-First move
-<img src="images/image-44.png" alt="alt text" width="600">
+<div align="center">
+<img src="images/image-43.png" alt="Alternative knight path" width="500">
+</div>
 
-second move from Blue node with 1
-<img src="images/image-45.png" alt="alt text" width="600">
+**Use BFS:**
 
-Hit the right one
-<img src="images/image-46.png" alt="alt text" width="600">
+**First move:**
+<div align="center">
+<img src="images/image-44.png" alt="BFS first move" width="500">
+</div>
 
-<img src="images/image-47.png" alt="alt text" width="600">
+**Second move from Blue node with 1:**
+<div align="center">
+<img src="images/image-45.png" alt="BFS second move" width="500">
+</div>
+
+**Hit the right one:**
+<div align="center">
+<img src="images/image-46.png" alt="BFS target reached" width="500">
+</div>
+
+<div align="center">
+<img src="images/image-47.png" alt="BFS final result" width="500">
+</div>
 
 ```
   public static int knightAttack(int n, int kr, int kc, int pr, int pc) {
@@ -106,9 +120,11 @@ Hit the right one
 ### 2. can color
 Takes in an map representing the adjacency list of an undirected graph and return a boolean indicating whether or not it is possible to color nodes of the graph using two colors in such a way that adjacent nodes are always different colors.
 
-![alt text](image-84.png)  
-![alt text](image-85.png)
-![alt text](image-86.png)
+<div align="center">
+<img src="image-84.png" alt="Graph coloring example 1" width="400">
+<img src="image-85.png" alt="Graph coloring example 2" width="400">
+<img src="image-86.png" alt="Graph coloring example 3" width="400">
+</div>
 
 #### Approach
 - Traverse the graph using BFS or DFS
@@ -116,7 +132,9 @@ Takes in an map representing the adjacency list of an undirected graph and retur
 - If I travel to a visited node, and it has a diffrent color that what I intend to color now, then return false. 
 - If all nodes can be colored without conflicts, return true
 
-![alt text](image-87.png)
+<div align="center">
+<img src="image-87.png" alt="Graph coloring approach" width="500">
+</div>
 
 **DFS - Recursive**
 ```
@@ -160,21 +178,29 @@ Takes in a list of rivalries as an argument. A rivalry is a pair of people who s
 #### Approach
 - Convert rivalries into an graph (adjacency list)
 
-![alt text](image-88.png)
+<div align="center">
+<img src="image-88.png" alt="Rivalries to graph conversion" width="500">
+</div>
 
 - Start coloring the graph with red color. The next node is a rival, so color it blue.
 - This now is the same problem as the previous one, can color.
 - Bipartite graph
 
-![alt text](image-89.png)
+<div align="center">
+<img src="image-89.png" alt="Bipartite graph coloring" width="500">
+</div>
 
 - When travelling from seb to raj, we would want to color raj as red, but it is already colored blue, so return false.
 
-![alt text](image-90.png)
+<div align="center">
+<img src="image-90.png" alt="Color conflict detection" width="500">
+</div>
 
--DFS with Island hopping
+**DFS with Island hopping:**
 
-![alt text](image-91.png)
+<div align="center">
+<img src="image-91.png" alt="DFS island hopping" width="500">
+</div>
 
 ```
 public static boolean tolerantTeams(List<List<String>> rivalries) {
@@ -262,17 +288,25 @@ There are two routes that can be used to travel from city 1 to city 2:
 The answer is false, because routes should be unique.
 ```
 
-- One unique route between every pair of cities.
-![alt text](image-92.png). 
+- **One unique route between every pair of cities:**
+<div align="center">
+<img src="image-92.png" alt="Unique route example" width="500">
+</div>
 
-- Mutiple ways to travel from 0 to 3  
-![alt text](image-93.png)
+- **Multiple ways to travel from 0 to 3:**
+<div align="center">
+<img src="image-93.png" alt="Multiple routes example" width="500">
+</div>
 
-- No way to travel from o to 4. 
-![alt text](image-94.png)
+- **No way to travel from 0 to 4:**
+<div align="center">
+<img src="image-94.png" alt="No route example" width="500">
+</div>
 
-- If I double visit a node, there must be multiple ways to travel betwween two nodes.  
-![alt text](image-96.png)
+- **If I double visit a node, there must be multiple ways to travel between two nodes:**
+<div align="center">
+<img src="image-96.png" alt="Cycle detection" width="500">
+</div>
 
 #### Approach
 - Pattern - Cycle detection in undirected graph.
@@ -340,14 +374,20 @@ The topological ordering of a graph is a sequence where "parent nodes" appear be
 - Count the in-degree of each node.
 - Initialize a queue with nodes that have an in-degree of 0.
 
-![alt text](image-97.png)
+<div align="center">
+<img src="image-97.png" alt="Kahn's algorithm step 1" width="500">
+</div>
 
 - While the queue is not empty, remove a node from the queue, add it to the topological order, and decrease the in-degree of its neighbors.
 
-![alt text](image-98.png). 
+<div align="center">
+<img src="image-98.png" alt="Kahn's algorithm step 2" width="500">
+</div>
 
 - If a neighbor's in-degree becomes 0, add it to the queue.
-![alt text](image-99.png)
+<div align="center">
+<img src="image-99.png" alt="Kahn's algorithm step 3" width="500">
+</div>
 
 - **If the topological order contains all nodes, return it; otherwise, return an empty list indicating a cycle exists.**
 
@@ -450,9 +490,13 @@ Source.safeCracking(List.of(
 )); // -> "718"
 ```
 
-![alt text](image-100.png)
-![alt text](image-101.png)
-![alt text](image-102.png)
+**Safe cracking examples:**
+
+<div align="center">
+<img src="image-100.png" alt="Safe cracking hints" width="400">
+<img src="image-101.png" alt="Safe cracking graph" width="400">
+<img src="image-102.png" alt="Safe cracking solution" width="400">
+</div>
 
 ```
 public static String safeCracking(List<List<Integer>> hints) {
@@ -519,7 +563,9 @@ Write a method, stringSearch, that takes in a grid of letters and a string as ar
 
 You can assume that all letters are lowercase and alphabetic.
 
-![alt text](image-103.png)
+<div align="center">
+<img src="image-103.png" alt="String search grid example" width="500">
+</div>
 
 #### Approach
 - Traverse the grid using DFS.
@@ -528,7 +574,9 @@ You can assume that all letters are lowercase and alphabetic.
 - If the entire string is found, return true.
 - If all positions are checked and the string is not found, return false.
 
-![alt text](image-104.png)
+<div align="center">
+<img src="image-104.png" alt="String search DFS approach" width="500">
+</div>
 
 ```
  public static boolean stringSearch(List<List<String>> grid, String s) {
