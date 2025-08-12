@@ -446,7 +446,6 @@ public static List<String> topologicalOrder(Map<String, List<String>> graph) {
     Stack<String> st = new Stack<>();
 
     for(String node: graph.keySet()){
-      if(!visited.contains(node))
         dfs(graph,visited,st,node);
     }
 
@@ -464,7 +463,6 @@ public static List<String> topologicalOrder(Map<String, List<String>> graph) {
     visited.add(node);
 
     for(String neighbour: graph.get(node)){
-      if(!visited.contains(neighbour))
         dfs(graph,visited,st,neighbour);
     }
 
