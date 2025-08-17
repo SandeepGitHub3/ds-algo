@@ -114,38 +114,28 @@ Source.minChange(8, List.of(1, 5, 4, 12)); // -> 2, because 4+4
 
 **NOTICE this Step where we check for min count**
 ```
-public static int minChange(int amount, List<Integer> coins) {
-return minChange(amount, coins, new HashMap<>());
-}
+  public static int minChange(int amount, List<Integer> coins) {
+    return minChange(amount,coins,new HashMap<>());
+  }
+  
+  private static int minChange(int amount, List<Integer> coins, Map<Integer,Integer> memo) {
+    if (amount == 0) return 0;
+    if (amount < 0) return -1;
+    if (memo.containsKey(amount)) return memo.get(amount);
+    
+    int minCoins = Integer.MAX_VALUE;
+    for(Integer coin: coins){
+      int reqCoins = minChange(amount-coin, coins,memo);
+      if(reqCoins>=0){
+        reqCoins = reqCoins + 1;
+        minCoins = Math.min(minCoins,reqCoins);
+      }
+    }
 
-public static int minChange(int amount, List<Integer> coins, HashMap<Integer, Integer> memo) {
-if (amount == 0) {
-return 0;
-}
-
-if (amount < 0) {
-return -1;
-}
-
-if (memo.containsKey(amount)) {
-return memo.get(amount);
-}
-
-int minCoins = -1;
-for (int coin : coins) {
-int subAmount = amount - coin;
-int subCoins = minChange(subAmount, coins, memo);
-if (subCoins != -1) {
-int numCoins = 1 + subCoins;
-if (numCoins < minCoins || minCoins == -1) { //NOTICE this Step where we check for min count.
-minCoins = numCoins;
-}
-}
-}
-
-memo.put(amount, minCoins);
-return minCoins;
-}
+    if (minCoins == Integer.MAX_VALUE) minCoins = -1;
+    memo.put(amount,minCoins);
+    return minCoins;
+  }
 ```
 
 ### 3. count paths
