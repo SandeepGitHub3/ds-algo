@@ -276,26 +276,23 @@ Memoisation.
 Check how we intepret the list elements.The code looks simple, but its very difficult to get the intution.
 
 ```
-public static int nonAdjacentSum(List<Integer> nums) {
-return nonAdjacentSum(nums, 0, new HashMap<>());
-}
+  public static int nonAdjacentSum(List<Integer> nums) {
+    return nonAdjacentSum(nums, 0, new HashMap<>());
+  }
 
-public static int nonAdjacentSum(List<Integer> nums, int i, HashMap<Integer, Integer> memo) {
-if (i >= nums.size()) {
-return 0;
-}
+  private static int nonAdjacentSum(List<Integer> nums, int index, HashMap<Integer,Integer> memo){
+    
+    if(index >= nums.size()) return 0;
+    if(memo.containsKey(index)) return memo.get(index); 
+    
+    int max = Math.max(
+      nums.get(index) + nonAdjacentSum(nums, index+2, memo),
+      nonAdjacentSum(nums, index+1, memo)
+    );
 
-if (memo.containsKey(i)) {
-return memo.get(i);
-}
-
-int result = Math.max(
-nums.get(i) + nonAdjacentSum(nums, i + 2, memo),
-nonAdjacentSum(nums, i + 1, memo)
-);
-memo.put(i, result);
-return result;
-}
+    memo.put(index,max);
+    return max;
+  }
 ```
 
 ### 6. summing squares
