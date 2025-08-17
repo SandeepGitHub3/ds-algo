@@ -218,38 +218,32 @@ And then add the node value
 ![alt text](images/image-76.png)
 
 
-r = rows
-c = col
-Time Complexity - O(rc)
-Space Complexity - O(rc)
-As there will be total rc different nodes in the decision tree and we will have to calculate this rc times
+- r = rows
+- c = col
+- Time Complexity - O(rc)
+- Space Complexity - O(rc)
+- As there will be total rc different nodes in the decision tree and we will have to calculate this rc times
 
 ```
-public static int maxPathSum(List<List<Integer>> grid) {
-return (int) maxPathSum(0, 0, grid, new HashMap<>());
-}
+ public static int maxPathSum(List<List<Integer>> grid) {
+    // todo
+    return maxPathSum(grid,0,0,new HashMap<List<Integer>,Integer>());
+  }
 
-public static double maxPathSum(int r, int c, List<List<Integer>> grid, HashMap<List<Integer>, Double> memo) {
-if (r == grid.size() || c == grid.get(0).size()) {
-return Double.NEGATIVE_INFINITY;
-}
+  private static int maxPathSum(List<List<Integer>> grid,int row, int col,HashMap<List<Integer>,Integer> memo) {
+    if (row<0 || col< 0 || row>=grid.size() || col >= grid.get(row).size()) return 0;
+    if(row == grid.size()-1 && col== grid.get(row).size()-1) return grid.get(row).get(col);
 
-if (r == grid.size() - 1 && c == grid.get(0).size() - 1) {
-return grid.get(r).get(c);
-}
+    List<Integer> key = List.of(row,col);
+    if(memo.containsKey(key)) return memo.get(key);
 
-List<Integer> pos = List.of(r, c);
-if (memo.containsKey(pos)) {
-return memo.get(pos);
-}
-
-double result = grid.get(r).get(c) + Math.max(
-maxPathSum(r + 1, c, grid, memo),
-maxPathSum(r, c + 1, grid, memo)
-);
-memo.put(pos, result);
-return result;
-}
+    int maxPS = grid.get(row).get(col) + Math.max(
+      maxPathSum(grid,row+1,col,memo),
+      maxPathSum(grid,row,col+1,memo)
+                );
+    memo.put(key,maxPS);
+    return maxPS;
+   }
 ```
 
 ### 5. non adjacent sum
