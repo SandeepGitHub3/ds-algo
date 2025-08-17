@@ -17,7 +17,8 @@
 - [11. can concat](#11-can-concat)
 - [Intuition](#intuition-1)
 - [12. quickest concat](#12-quickest-concat)
-- [13. knightly number](#13-knightly-number)
+- [13. valid compound](#13-valid-compound)
+- [14. knightly number](#14-knightly-number)
 
 
 ## Introduction
@@ -766,10 +767,40 @@ min = attempt;
 memo.put(s, min);
 return min;
 }
-
 ```
 
-### 13. knightly number
+### 13. valid compound
+You are a chemist and have to figure out if you can make a compound from some given elements!
+
+Write a method, validCompound, that takes in a target compound and a list of elements. The method should return a boolean indicating whether or not the compound can be created from the given elements.
+
+A compound is made by concatenating one or more elements together.
+
+You may reuse elements of the list as many times as needed to make a compound.
+
+![alt text](image-132.png)
+
+Reduce the size of the problem by shrinking the target compound
+![alt text](image-133.png)
+
+![alt text](image-134.png)
+
+![alt text](image-135.png)
+
+![alt text](image-136.png)
+
+![alt text](image-137.png)
+
+![alt text](image-138.png) 
+
+![alt text](image-139.png)
+
+![alt text](image-140.png)
+
+```
+![alt text](image-141.png)
+```
+### 14. knightly number
 
 A knight is on a chess board. Can you figure out the total number of ways the knight can move to a target position in exactly m moves? On a single move, the knight can move in an "L" shape; two spaces in any direction, then one space in a perpendicular direction. This means that on a single move, a knight has eight possible positions it can move to.
 
