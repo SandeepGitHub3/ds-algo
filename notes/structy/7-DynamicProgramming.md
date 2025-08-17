@@ -175,28 +175,23 @@ Time Complexity - Is Driven by the no of recursive calls. Since we are storing t
 ![alt text](images/image-71.png)
 
 ```
-public static int countPaths(List<List<String>> grid) {
-return countPaths(0, 0, grid, new HashMap<>());
-}
+  public static int countPaths(List<List<String>> grid) {
+    Map<String,Integer> memo = new HashMap<>();
+    return countPaths(grid,0,0,memo);
+  }
 
-public static int countPaths(int r, int c, List<List<String>> grid, HashMap<List<Integer>, Integer> memo) {
+  public static int countPaths(List<List<String>> grid,int row,int col,Map<String,Integer> memo) {
+    if(row < 0 || col< 0 || row >= grid.size() || col>= grid.get(row).size()) return 0;
+    if(grid.get(row).get(col) == "X") return 0;
+    if(row == grid.size()-1 && col == grid.get(row).size()-1) return 1;
 
-if(row < 0 || col< 0 || row >= grid.size() || col>= grid.get(row).size()) return 0;
-
-if(grid.get(row).get(col) == "X") return 0;
-
-if(row == grid.size()-1 && col == grid.get(row).size()-1) return 1;
-
-
-List<Integer> pos = List.of(r, c);
-if (memo.containsKey(pos)) {
-return memo.get(pos);
-}
-
-int result = countPaths(r + 1, c, grid, memo) + countPaths(r, c + 1, grid, memo);
-memo.put(pos, result);
-return result;
-}
+    String key = row+"-"+col;
+    if(memo.containsKey(key)) return memo.get(key);
+    
+    int totalPath =  countPaths(grid,row,col+1,memo) + countPaths(grid,row+1,col,memo);
+    memo.put(key,totalPath);
+    return totalPath;
+  }
 ```
 
 ### 4. max path sum
