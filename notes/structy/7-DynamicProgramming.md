@@ -797,8 +797,64 @@ Reduce the size of the problem by shrinking the target compound
 
 ![alt text](image-140.png)
 
-```
 ![alt text](image-141.png)
+
+```
+  public static boolean validCompound(String compound, List<String> elements) {
+    return validCompound(compound,elements,0,new HashMap<>());
+  }
+
+  private static boolean validCompound(String compound, List<String> elements, int index, HashMap<Integer, Boolean> memo) {
+    if (index == compound.length()) return true;
+    if (memo.containsKey(index)) return memo.get(index);
+
+    for(String ele:elements){
+      if(compound.startsWith(ele.toLowerCase(),index)){
+        if(validCompound(compound, elements, index + ele.length(),memo)){
+          memo.put(index,true);
+          return true;
+        }
+      }
+    }
+
+    memo.put(index,false);
+    return false;
+  }
+```
+
+### 15.count compounds.
+Same problem as above, but now instead of just boolean, return the total no of ways the compound can be formed.
+
+![alt text](image-142.png)
+![alt text](image-143.png)
+
+```
+  public static int countCompounds(String compound, List<String> elements) {
+    return countCompounds(compound,elements,0, new HashMap<>());
+  }
+
+  private static int countCompounds(String compound, List<String> elements, int startIndex,HashMap<Integer,Integer> memo){
+    if(startIndex == compound.length()) return 1;
+
+    if (memo.containsKey(startIndex)) return memo.get(startIndex);
+
+    int count = 0;
+    
+    for(String element: elements){
+      if(compound.startsWith(element.toLowerCase(),startIndex)){
+       count = count + countCompounds(compound,elements,startIndex+element.length(),memo);
+      }
+    }
+    memo.put(startIndex,count);
+    return count;
+  }
+```
+
+```
+- c = length of compound
+- e = # of elements
+- Time: O(ew)
+- Space: O(c)
 ```
 ### 14. knightly number
 
