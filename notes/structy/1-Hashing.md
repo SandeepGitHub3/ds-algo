@@ -202,25 +202,6 @@ You may assume that each input list does not contain duplicate elements.
     
     return difference;
   }
- public static List<Integer> exclusiveItems(List<Integer> a, List<Integer> b) {
-    HashSet<Integer> setA = new HashSet<>(a);
-    HashSet<Integer> setB = new HashSet<>(b);
-    List<Integer> difference = new ArrayList<>();
-    
-    for (int item : a) {
-      if (!setB.contains(item)) {
-        difference.add(item);
-      }
-    }
-
-    for (int item : b) {
-      if (!setA.contains(item)) {
-        difference.add(item);
-      }
-    }
-    
-    return difference;
-  }
 ```
 
 - n = length of array a, m = length of array b
