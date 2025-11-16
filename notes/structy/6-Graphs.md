@@ -2,7 +2,7 @@
 
 
 - [Introduction](#introduction)
-  - [Relaiion between nodes and Edges](#relaiion-between-nodes-and-edges)
+  - [Relation between nodes and Edges](#relaiion-between-nodes-and-edges)
 - [Problems](#problems)
   - [1. Has Path](#1-has-path)
   - [2. undirected path](#2-undirected-path)
