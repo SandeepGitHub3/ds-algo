@@ -36,7 +36,7 @@ Cyclic and Acyclic Graphs
 Traversing a Cyclic Graph will result in infinite Loop
 <img src="images/image-26.png" alt="alt text" width="600">
 
-### Relaiion between nodes and Edges
+### Relation between nodes and Edges
 n(nodes) = 5.  
 e(edges) = (5 * 4)/2  
 5 * -- Each node will have an edge going to other nodes.   
@@ -46,7 +46,8 @@ e(edges) = (5 * 4)/2
 max edges. = (n * n-1)/2. 
 In general e = O(n2)
 
-<img src="images/image-33.png" alt="alt text" width="600">
+<img src="images/image-33.png" alt="alt text" width="600">  
+
 ## Problems
 
 ### 1. Has Path
