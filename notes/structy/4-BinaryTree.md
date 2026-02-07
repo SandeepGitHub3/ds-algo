@@ -429,6 +429,33 @@ Time and Space compexity will need to be expressed in terms of
 ![alt text](images/image-19.png)
 ![alt text](images/image-20.png).  
 
+#### Backtracking approach
+```
+public static <T> List<List<T>> allTreePaths(Node<T> root) {
+    List<List<T>> result = new ArrayList<>();
+    backtrack(root, new ArrayList<>(), result);
+    return result;
+}
+
+private static <T> void backtrack(
+    Node<T> node,
+    List<T> path,
+    List<List<T>> result
+) {
+    if (node == null) return;
+
+    path.add(node.val);
+
+    if (node.left == null && node.right == null) {
+        result.add(new ArrayList<>(path)); // copy only at leaf
+    } else {
+        backtrack(node.left, path, result);
+        backtrack(node.right, path, result);
+    }
+
+    path.remove(path.size() - 1); // backtrack
+}
+```
 n/2*log(n) = n*log(n)
 
 ### 10. tree levels
