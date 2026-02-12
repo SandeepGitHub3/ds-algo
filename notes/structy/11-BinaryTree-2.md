@@ -73,6 +73,30 @@ public static List<String> findPath(Node<String> root, String targetVal) {
     return null;
   }  
 ```
+
+- Also check Leetcode Problem which can be extended to N nodes instead of just 2
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iv
+
+```
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
+        if (root == null) {
+            return null;
+        }
+
+        for (TreeNode node : nodes) {
+            if (root == node) {
+                return node;
+            }
+        }
+        
+        TreeNode LeftChild = lowestCommonAncestor(root.left, nodes);
+        TreeNode RightChild = lowestCommonAncestor(root.right, nodes);
+        if (LeftChild != null && RightChild != null) {
+            return root;
+        }
+        return LeftChild != null? LeftChild: RightChild;
+    }
+```
 ---
 ### 2. flip tree
 - Easy Problem
