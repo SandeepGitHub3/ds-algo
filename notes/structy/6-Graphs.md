@@ -99,7 +99,7 @@ undirectedPath, that takes in a list of edges for an undirected graph and two no
 
 Learn 
 - how to construct AdjMap - Graph from the list of Nodes
-- Since no mention of acyclic graph, lets guard aginst acyclic graph, by marking the nodes as visited to avoid getting into infinite loop
+- Since no mention of acyclic graph, lets guard aginst cyclic graph, by marking the nodes as visited to avoid getting into infinite loop
 
 ```
  List<List<String>> edges = List.of(
