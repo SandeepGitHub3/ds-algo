@@ -714,32 +714,27 @@ The only way we could encounter a visiting node is when we have a cycle
 
 ```
   public static boolean hasCycle(Map<String, List<String>> graph) {
-    HashSet<String> visited = new HashSet<>();
-    for (String node : graph.keySet()) {
-      if (cycleDetect(node, graph, new HashSet<>(), visited)) {
-        return true;
+
+    Set<String> visited = new HashSet<>();
+    
+    for(String node : graph.keySet()){
+      if(!visited.contains(node)){
+        if (dfs(graph,node,new HashSet<>(), visited))
+          return true;
       }
     }
     return false;
   }
   
-  public static boolean cycleDetect(String node, Map<String, List<String>> graph, HashSet<String> visiting, HashSet<String> visited) {
-    if (visited.contains(node)) {
-      return false;
-    } 
-    
-    if (visiting.contains(node)) {
-      return true;
-    }
-    
+  private static boolean dfs(Map<String, List<String>> graph,String node, Set<String> visiting, Set<String> visited){
+    if (visiting.contains(node)) return true;   // cycle found
+    if (visited.contains(node)) return false;  // already processed
+
     visiting.add(node);
-    
-    for (String neighbor : graph.get(node)) {
-      if (cycleDetect(neighbor, graph, visiting, visited)) {
-        return true;
-      }
+    for(String neighbour:graph.get(node)){
+      if (dfs(graph,neighbour,visiting,visited))  
+          return true;
     }
-    
     visiting.remove(node);
     visited.add(node);
     return false;
