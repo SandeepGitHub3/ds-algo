@@ -262,13 +262,11 @@ public static List<List<Integer>> combineIntervals(List<List<Integer>> intervals
       int lastEnd = last.get(1);
       int currentStart = interval.get(0);
       int currentEnd = interval.get(1);
-      
-      if(lastEnd >= currentStart){
-        if(lastEnd < currentEnd){
-          last.set(1,currentEnd);
-        }
-      }else{
+
+      if(mergedIntervals.isEmpty() || lastEnd<currentStart)
         mergedIntervals.add(new ArrayList<>(interval));
+      else{
+        last.set(1,Math.max(lastEnd,currentEnd));
       }
     }
     return mergedIntervals;
