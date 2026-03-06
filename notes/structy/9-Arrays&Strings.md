@@ -18,10 +18,7 @@
 
 ## Intro
 
-Important techniques
-- Two Pointer
-- Hash Map
-- Hash Set
+Conatins Miscellaneous problems which do not fit is any other topic.Hence the problems may be unrelated to each other.
 
 ## Problems
 
