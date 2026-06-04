@@ -44,28 +44,19 @@ Source.subsets(List.of("a", "b")); // ->
 ##### Iterative
 ```
 public static List<List<String>> subsets(List<String> elements) {
-    List<List<String>> allSubsets = new ArrayList<>();
-    allSubsets.add(new ArrayList<>());
+    List<List<String>> res = new ArrayList<>();
+    res.add(new ArrayList<>());
 
-    for(String ele :elements){
-      getAllsubsets(ele,allSubsets);
+    for(String ele: elements){
+        int size = res.size();
+        for(int i=0; i<size; i++){
+            List<String> resWithoutEle = new ArrayList<>(res.get(i));
+            resWithoutEle.add(ele);
+            res.add(resWithoutEle);
+        }
     }
-    
-    return allSubsets;
-  }
 
-  private static void getAllsubsets(String element, List<List<String>> allSubsets){
-      // Important to get this in a variable
-      // Since the subsetSize will increase as we loop
-      int size = allSubsets.size(); 
-  
-      for(int i = 0; i < size ; i++) {
-          List<String> subsetWithElement = new ArrayList<>(allSubsets.get(i));
-          subsetWithElement.add(element);
-          allSubsets.add(subsetWithElement);
-      }
-
-      return;
+    return res;
   }
 ```
 
