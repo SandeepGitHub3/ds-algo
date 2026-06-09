@@ -399,10 +399,9 @@ There are four different ways to make an amount of 4:
 
 ![alt text](images/image-87.png)
 
-Height of the tree = Max no of coins as at every level we are choosing a different coin value
-a = amount
-c = no of coins
-
+Height of the tree =  no of coins = c
+Width of the tree = amount  = a
+Time Complexity  = a*c
 Space complexity = a*c because that will be the no of combinations we need to store in our memo hash.
 
 ![alt text](images/image-88.png)
