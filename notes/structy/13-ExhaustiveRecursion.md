@@ -131,28 +131,26 @@ Source.permutations(List.of()); // ->
 
 ##### Recursive Approach
 ```
-public static List<List<String>> permutations(List<String> elements) {
-    if (elements.size() == 0) {
-      return List.of(List.of());
+  public static List<List<String>> permutations(List<String> elements) {
+      List<List<String>> allPermutations = new ArrayList<>();
+      backtrack(elements, new ArrayList<>(), allPermutations);
+      return allPermutations;
+  }
+
+  private static void backtrack(List<String> elements,List<String> path, List<List<String>> allPermutations){
+
+    if(path.size() ==  elements.size()){
+      allPermutations.add(new ArrayList<>(path));
+      return;
     }
-    
-    List<List<String>> allPerms = new ArrayList<>();
-    String firstEle = elements.get(0);
-    
-    List<List<String>> subPerms = permutations(elements.subList(1, elements.size()));
-    for (List<String> subPerm : subPerms) {
-      for (int i = 0; i <= subPerm.size(); i += 1) {
-        List<String> left = subPerm.subList(0, i);
-        List<String> right = subPerm.subList(i, subPerm.size());
-        List<String> newPerm = new ArrayList<>();
-        newPerm.addAll(left);
-        newPerm.add(firstEle);
-        newPerm.addAll(right);
-        allPerms.add(newPerm);
+
+    for(String element: elements){
+      if(!path.contains(element)){
+        path.add(element);
+        backtrack(elements,path,allPermutations);
+        path.remove(path.size()-1);
       }
     }
-    
-    return allPerms;
   }
 ```
 
